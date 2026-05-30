@@ -38,10 +38,28 @@ characters, ~10 artists, thumbnails only) into your configured
 `data_dir` so the gallery isn't empty. Bring your own CSV + images to
 fill it out -- see `docs/data-format.md`.
 
-To note, AnimaDex will in the near future make the current dataset available on the
-site at [animadex.net](https://animadex.net) downloadeable - please be patient.
+### Clone the public dataset
 
-If you would like to generate your own images based on the same dataset, please note the site currently uses the Danbooru CSVs available on this [Huggingface Model - Laxhar/noob-wiki](https://huggingface.co/datasets/Laxhar/noob-wiki)
+You don't have to build your own dataset — you can pull the live catalogue
+straight from [animadex.net](https://animadex.net). Sign in there, open
+**Account → "Offline dataset export"**, generate a token, then run the
+import wizard here:
+
+```bat
+import.bat         :: Windows
+```
+```bash
+./import.sh         # macOS / Linux
+```
+
+It downloads the character/artist metadata + thumbnails (full-res images
+optional) and ingests them locally. First run is a full import; later runs
+fetch only what changed. See **[docs/import-from-site.md](docs/import-from-site.md)**
+for the details.
+
+If you'd rather generate your own images based on the same dataset, note
+the site uses the Danbooru CSVs from the
+[Huggingface dataset — Laxhar/noob-wiki](https://huggingface.co/datasets/Laxhar/noob-wiki).
 
 ## Configuration
 
