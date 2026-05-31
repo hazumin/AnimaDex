@@ -1,0 +1,23 @@
+# ─── .dockerignore ───
+.git
+.github
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+dist
+build
+.env
+config.toml
+docs
+scripts
+*.bat
+install.sh
+run.sh
+import.sh
+import.bat
+install.bat
+run.bat
+README.md
+LICENSE

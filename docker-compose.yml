@@ -1,0 +1,36 @@
+# ─── AnimaDex Docker Compose ───
+# Usage:
+#   docker compose up -d          # Start
+#   docker compose logs -f        # Follow logs
+#   docker compose down           # Stop
+#   docker compose up -d --build  # Rebuild & start
+
+services:
+  animadex:
+    build: .
+    container_name: animadex
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - animadex-data:/app/data
+    environment:
+      # Override config.toml values via env vars (ANIMADEX_<SECTION>_<KEY>)
+      # Uncomment and set as needed:
+      - ANIMADEX_SERVER_HOST=0.0.0.0
+      - ANIMADEX_SERVER_PORT=5000
+      # - ANIMADEX_SERVER_SECRET_KEY=your-secret-key-here
+      # - ANIMADEX_ADMIN_PASSWORD=your-admin-password
+      # - ANIMADEX_SERVER_TRUST_PROXY=true   # if behind nginx/caddy
+    # Optional: mount a custom config.toml
+    # configs:
+    #   - source: animadex-config
+    #     target: /app/config.toml
+
+volumes:
+  animadex-data:
+    driver: local
+
+# configs:
+#   animadex-config:
+#     file: ./config.toml
